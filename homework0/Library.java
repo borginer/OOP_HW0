@@ -6,13 +6,16 @@ package homework0;
  * Once a Library is full, we cannot add more books to it.
  */
 public class Library {
-
+    int maxPages;
+    Bookshelf shelf;
+    
     /**
      * @param maxPages - Total number of pages that this Library can contain.
      * @effects Creates a new Library.
      */
     public Library(int maxPages) {
-        // TODO: Add your code here
+        this.maxPages = maxPages;
+        this.shelf = new Bookshelf();
     }
 
     /**
@@ -24,8 +27,11 @@ public class Library {
      *         false otherwise.
      */
     public boolean addBook(Book book) {
-        // TODO: Add your code here
-        return false;
+        if (shelf.getTotalPages() + book.getPages() > maxPages) {
+            return false;
+        }
+        
+        return shelf.addBook(book);
     }
 
     /**
@@ -35,24 +41,21 @@ public class Library {
      *         i.e. the book was in the Library; false otherwise.
      */
     public boolean removeBook(Book book) {
-        // TODO: Add your code here
-        return 0;
+        return shelf.removeBook(book);
     }
 
     /**
      * @return the total number of pages in all the books in the Library.
      */
     public int getTotalPages() {
-        // TODO: Add your code here
-        return 0;
+        return shelf.getTotalPages();
     }
 
     /**
      * @return the number of books in the Library.
      */
     public int size() {
-        // TODO: Add your code here
-        return 0;
+        return shelf.size();
     }
 
     /**
@@ -60,14 +63,13 @@ public class Library {
      * @effects Empties the Library.
      */
     public void clear() {
-        // TODO: Add your code here
+        shelf.clear();
     }
 
     /**
      * @return true if this Library contains the book; false otherwise.
      */
     public boolean contains(Book book) {
-        // TODO: Add your code here
-        return false;
+        return shelf.contains(book);
     }
 }

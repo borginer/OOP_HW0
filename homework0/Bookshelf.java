@@ -1,16 +1,21 @@
 package homework0;
 
+import java.util.ArrayList;
+
 /**
  * A container that can be used to store Books. A given Book may only
  * appear in a Bookshelf once.
  */
 public class Bookshelf {
+    int pagesSum;
+    ArrayList<Book> bookList;
 
     /**
      * @effects Creates a new empty Bookshelf.
      */
     public Bookshelf() {
-        // TODO: Add your code here
+        this.pagesSum = 0;
+        this.bookList = new ArrayList<Book>();
     }
 
     /**
@@ -20,8 +25,13 @@ public class Bookshelf {
      *         i.e. the book was not already in the Bookshelf; false otherwise.
      */
     public boolean addBook(Book book) {
-        // TODO: Add your code here
-        return false;
+        if (bookList.contains(book)) {
+            return false;
+        }
+
+        pagesSum += book.getPages();
+        bookList.add(book);
+        return true;
     }
 
     /**
@@ -31,24 +41,28 @@ public class Bookshelf {
      *         i.e. the book was in the Bookshelf; false otherwise.
      */
     public boolean removeBook(Book book) {
-        // TODO: Add your code here
-        return false;
+        int bookIdx = bookList.indexOf(book);
+        if (bookIdx == -1) { // book not in list
+            return false;
+        }
+
+        pagesSum -= book.pages;
+        bookList.remove(bookIdx);
+        return true;
     }
 
     /**
      * @return the total number of pages in all the books in the Bookshelf.
      */
     public int getTotalPages() {
-        // TODO: Add your code here
-        return 0;
+        return pagesSum;
     }
 
     /**
      * @return the number of books in the Bookshelf.
      */
     public int size() {
-        // TODO: Add your code here
-        return 0;
+        return bookList.size();
     }
 
     /**
@@ -56,14 +70,14 @@ public class Bookshelf {
      * @effects Empties the Bookshelf, i.e., removes all books.
      */
     public void clear() {
-        // TODO: Add your code here
+        bookList.removeAll(bookList);
+        pagesSum = 0;
     }
 
     /**
      * @return true if this Bookshelf contains the book; false otherwise.
      */
     public boolean contains(Book book) {
-        // TODO: Add your code here
-        return false;
+        return bookList.contains(book);
     }
 }
