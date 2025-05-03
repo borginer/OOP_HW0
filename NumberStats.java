@@ -21,28 +21,39 @@ public class NumberStats {
         int zeros = 0;
         int lineNum = 1;
 
-        String numberBuffers = " ;?{}[]=-+_!@#$%^&*():',.";
+        String delims = " ;?{}[]=+_!@#$%^&*():',.";
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = br.readLine()) != null) {
-                StringTokenizer tokenizer = new StringTokenizer(line, numberBuffers);
+                StringTokenizer tokenizer = new StringTokenizer(line, delims + "-", true);
                 int lineSum = 0;
                 int lineNumbersNum = 0;
+                boolean minusFlag = false;
+
                 while (tokenizer.hasMoreTokens()) {
                     String token = tokenizer.nextToken();
-                    try {
-                        int num = Integer.parseInt(token);
-                        numbersNum++;
-                        lineNumbersNum++;
-                        lineSum += num;
+                    if (token.equals("-")) {
+                        minusFlag = true;
+                    } else {
+                        try {
+                            int num = Integer.parseInt(token);
+                            if (minusFlag) {
+                                num = -num;
+                                minusFlag = false;
+                            }
+                            numbersNum++;
+                            lineNumbersNum++;
+                            lineSum += num;
 
-                        if (num > 0) positives++;
-                        else if (num < 0) negatives++;
-                        else zeros++;
+                            if (num > 0) positives++;
+                            else if (num < 0) negatives++;
+                            else zeros++;
 
-                    } catch (NumberFormatException e) {
-                        // if the token is not a number, ignore it
+                        } catch (NumberFormatException e) {
+                            // if the token is not a number, ignore it and reset the minusFlag
+                            minusFlag = false;
+                        }
                     }
                 }
                 if (lineNumbersNum > 0) {
@@ -62,8 +73,8 @@ public class NumberStats {
         double percentZeros = 100.0 * zeros / numbersNum;
 
         System.out.printf("The number of numbers in the file is: %d \n", numbersNum);
-        System.out.printf("%.2f%% percent of the numbers are positive", percentPositives);
-        System.out.printf("%.2f%% percent of the numbers are negative", percentNegatives);
-        System.out.printf("%.2f%% percent of the numbers are zero", percentZeros);
+        System.out.printf("%.2f%% percent of the numbers are positive \n", percentPositives);
+        System.out.printf("%.2f%% percent of the numbers are negative \n", percentNegatives);
+        System.out.printf("%.2f%% percent of the numbers are zero \n", percentZeros);
     }
 }

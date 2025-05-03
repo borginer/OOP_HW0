@@ -1,0 +1,24 @@
+The average of the numbers in line 1 is: 428.00
+The average of the numbers in line 2 is: 91.25
+The average of the numbers in line 3 is: 248.50
+The average of the numbers in line 4 is: 66.43
+The average of the numbers in line 5 is: 260.29
+The average of the numbers in line 6 is: 115.38
+The average of the numbers in line 7 is: 216.86
+The average of the numbers in line 8 is: 97.17
+The average of the numbers in line 9 is: -220.86
+The average of the numbers in line 10 is: 71.50
+The average of the numbers in line 11 is: 103.00
+The average of the numbers in line 12 is: 570.17
+The average of the numbers in line 13 is: 239.86
+The average of the numbers in line 14 is: 132.29
+The average of the numbers in line 15 is: 237.57
+The average of the numbers in line 16 is: 444.50
+The average of the numbers in line 17 is: -133.43
+The average of the numbers in line 18 is: 558.86
+The average of the numbers in line 19 is: 303.43
+The average of the numbers in line 20 is: 4.29
+The number of numbers in the file is: 138
+71.74% percent of the numbers are positive
+28.26% percent of the numbers are negative
+0.00% percent of the numbers are zero
