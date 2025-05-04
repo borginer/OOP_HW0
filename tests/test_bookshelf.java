@@ -1,3 +1,4 @@
+package tests;
 import homework0.*;
 
 public class test_bookshelf {
