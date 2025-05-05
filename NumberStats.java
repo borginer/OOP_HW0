@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.StringTokenizer;
 
-
+// this was written before the change about the - sign
 public class NumberStats {
     /**
      * @requires args.length == 1 && args[0] is the name of an existing readable text file.
